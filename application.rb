@@ -17,7 +17,19 @@ helpers do
   # add your helpers here
 end
 
-# root page
 get '/' do
-  haml :root
+	erb:form
+end
+
+post '/confirmacion' do
+	puts params
+	patient = Patient.new(params[:patient])
+
+	if patient.save
+		puts "*******************Patient Saved!"
+		erb:confirmation, locals: {patient: patient}
+	else
+		puts "*******************ERROR - Patient not saved!"
+		redirect '/'
+	end
 end

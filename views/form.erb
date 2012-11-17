@@ -1,0 +1,21 @@
+<form action="/confirmacion" method="post" class="form-inline">
+	<div class="well">
+		<h4>Paciente</h4>
+		<input placeholder="Nombre" type="text" class="span4" name="patient[name]">
+		<input placeholder="ID" type="text"  class="input-medium" name="patient[patid]">
+		<input placeholder="Edad" type="number" class="input-mini" name="patient[age]">
+		<!-- <input placeholder="Sexo" type="text" name="patient[sex]"> -->
+		<label class="radio">
+			<input type="radio" name="patient[sex]" id="sex_m" value="M" checked>
+			M
+		</label>
+		<label class="radio">
+			<input type="radio" name="patient[sex]" id="sex_f" value="F">
+			F
+		</label>
+	</div>
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">Guardar</button>
+		<button type="button" class="btn">Cancelar</button>
+	</div>
+</form>

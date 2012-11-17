@@ -1,5 +1,5 @@
 source :rubygems
-gem 'sinatra', '>= 1.0'
+gem 'sinatra'# , '>= 1.0'
 gem 'rake'
 gem 'data_mapper'
 gem 'dm-core'
@@ -8,7 +8,7 @@ gem 'dm-timestamps'
 gem 'dm-validations'
 gem 'dm-aggregates'
 gem 'dm-migrations'
-gem 'haml'
+gem 'shotgun'
 
 group :test do
   gem 'rspec', :require => 'spec'

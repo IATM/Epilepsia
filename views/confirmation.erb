@@ -1,0 +1,7 @@
+<h4>Successfully created patient <%=patient.name %></h4>
+
+<h5>All Patients:</h5>
+
+<% Patient.all.each do |p| %>
+	<%= p.name %><br>
+<% end %>
