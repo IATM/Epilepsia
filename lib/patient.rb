@@ -5,4 +5,11 @@ class Patient
     property :name, String
     property :age, Integer
     property :sex, String
+    
+
+    has n, :reportes
+    
+    
+   
+  
 end
