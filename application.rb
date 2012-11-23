@@ -18,38 +18,30 @@ helpers do
 end
 
 get '/' do
-	erb:form
+  erb:form
 end
 
 post '/confirmacion' do
-	puts params
- 
 
-  #patient=Patient.new
-  #displasia=Displasia.create(params[:displasia])
-  #displasia.patient=Patient.new(params[:patient])
-  #esclerosi=Esclerosi.new(params[:esclerosi]) 
-  #esclerosi.save
-  
- 
-  pat = Patient.create(params[:patient])
-  #patient.save
+  begin
+    pat = Patient.create(params[:patient])
+      rep = pat.reportes.new(params[:reporte])
+      rep.esclerosi = Esclerosi.new(params[:esclerosi])
+      rep.displasia = Displasia.new(params[:displasia])
+    pat.save
 
-  rep = pat.reportes.new(params[:reporte], esclerosi: params[:esclerosi])
-  #reporte.patient=patient
-  #reporte.save
-  #puts rep.methods
-  #esc = rep.esclerosi.new(params[:esclerosi])
-  #esclerosi.reporte=reporte
-  pat.save
+    puts "*******************Patient Saved!"
+    erb:confirmation, locals: {patient: pat}
+  rescue DataMapper::SaveFailureError => e
+    puts "*******************Patient not saved!...reason: "
+    puts e.resource.errors.inspect
+  end
 
-
-    
-	if patient.save
-		puts "*******************Patient Saved!"
-		erb:confirmation, locals: {patient: patient}
-	else
-		puts "*******************ERROR - Patient not saved!"
-		redirect '/'
-	end
+  # if pat.save
+  #   puts "*******************Patient Saved!"
+  #   erb:confirmation, locals: {patient: pat}
+  # else
+  #   puts "*******************ERROR - Patient not saved!"
+  #   redirect '/'
+  # end
 end
