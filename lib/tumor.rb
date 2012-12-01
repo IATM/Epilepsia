@@ -6,7 +6,7 @@ class Tumor
   property :hiperintensidad, Boolean
   property :lesion, Boolean
   property :efecto_masa, Boolean
-  property :nodulo, Integer
+  property :nodulo, Boolean
   property :calsificaciones, Boolean
   property :hallazgos, Text
   property :circunvolucion, Text

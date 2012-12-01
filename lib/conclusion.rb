@@ -5,6 +5,6 @@ class Conclusion
   property :id, Serial
   property :rm, String
   property :hemisferio, String
-  property :sospecha, String
+  property :sospecha, Text
   property :correlacion, String
 end

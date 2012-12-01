@@ -8,7 +8,7 @@ class Reporte
   has 1, :conclusion
 
   property :id, Serial
-  property :codigo, Integer
+  property :codigo, String
   property :fecha, String
   property :firma, String
 end

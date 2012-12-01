@@ -1,7 +1,79 @@
-<h4>Successfully created patient <%=patient.name %></h4>
+<!-- <h4>Successfully created patient <%=patient.name %></h4> -->
+<form action="/" method="get" class="form-inline">
+<h3>El informe se ha guardado correctamente</h3>
 
-<h5>All Patients:</h5>
+<div class="row">
+	<div class="span3">
+	<b>Nombre del paciente:</b>
+	</div>
+	<div class="span5">
+	<%=patient.name%>
+	</div>
+</div>
 
-<% Patient.all.each do |p| %>
+<div class="row">
+	<div class="span3">
+	<b>Documento de identidad:</b>
+	</div>
+	<div class="span5">
+	<%=patient.patid%>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span3">
+	<b>RM:</b>
+	</div>
+	<div class="span5">
+	<%=conclusion.rm%>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span3">
+	<b>Sospecha clínica de:</b>
+	</div>
+	<div class="span8">
+	<%=conclusion.sospecha%>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span3">
+	<b>Correlación con imaginología:</b>
+	</div>
+	<div class="span5">
+	<%=conclusion.correlacion%>
+	</div>
+</div>
+<br>
+<div class="row">
+	<div class="span3">
+	<b>Codigo de la resonancia:</b>
+	</div>
+	<div class="span5">
+	<%=reporte.codigo%>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span3">
+	<b>Radiólogo:</b>
+	</div>
+	<div class="span5">
+		<%=reporte.firma%>
+	</div>
+</div>
+
+
+<div class="form-actions">
+	<button type="submit" class="btn btn-primary">Crear otro informe</button>
+	<button type="submit" class="btn">Buscar informes</button>
+</div>
+
+
+<!--
+ <% Patient.all.each do |p| %>
 	<%= p.name %><br>
 <% end %>
+-->
