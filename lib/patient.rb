@@ -3,13 +3,9 @@ class Patient
   has n, :reportes
 
   property :id, Serial
-  property :patid, String, :unique_index => true
-  property :name, String, :unique_index => true
+  property :patid, String, :unique => true
+  property :name, String
   property :age, Integer
   property :sex, String
-  
-  
-  #validates_uniqueness_of :patid, :scope => :name
-  
-   
+  validates_uniqueness_of :patid
 end
