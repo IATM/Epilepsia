@@ -20,25 +20,28 @@ get '/' do
   erb:select_study, locals: {patients: @patients}
 end
 
+post '/form' do
+  @pat=Patient.get(params[:patient][:id].to_i)
+  rep=@pat.reporte.new(params[:reporte])
+  erb:form, locals: {patient: @pat, reporte: rep}
+end
+
 post '/confirmacion' do
 
-  @pat=Patient.first_or_create(params[:patient])
-  puts @pat.inspect
-
-  @rep = @pat.reportes.new(params[:reporte])
+  @rep = rep
   @rep.esclerosi = Esclerosi.new(params[:esclerosi])
   @rep.displasia = Displasia.new(params[:displasia])
   @rep.malformacion = Malformacion.new(params[:malformacion])
   @rep.tumor = Tumor.new(params[:tumor])
   @rep.conclusion = Conclusion.new(params[:conclusion])
 
-  if @pat.save
-    puts "*******************Patient Saved!"
+  if @rep.save
+    puts "*******************Report Saved!"
     flash[:notice] = "El reporte se ha guardado satisfactoriamente"
-    erb:confirmation, locals: {patient: @pat, reporte: @rep, esclerosi: @rep.esclerosi, displasia: @rep.displasia, malformacion: @rep.malformacion, tumor: @rep.tumor, conclusion: @rep.conclusion}
+    erb:confirmation, locals: {reporte: @rep, esclerosi: @rep.esclerosi, displasia: @rep.displasia, malformacion: @rep.malformacion, tumor: @rep.tumor, conclusion: @rep.conclusion}
   else
     puts "*******************Patient not saved! "
-    flash[:error] = @pat.errors.full_messages.join(",")
+    flash[:error] = @rep.errors.full_messages.join(",")
     redirect '/'
   end
 end

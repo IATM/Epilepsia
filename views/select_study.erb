@@ -2,7 +2,7 @@
 	<div class="well">
 
 		<h4>Seleccione el sujeto</h4>
-		<select>
+		<select name="patient[id]">
 			<% patients.each do |p| %>
 			<option value=<%= p.id %>><%= p.code %></option>
 			<% end %>

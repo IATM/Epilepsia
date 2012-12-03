@@ -4,21 +4,8 @@
 
 <form action="/confirmacion" method="post" class="form-inline">
 	<div class="well">
-		<h4>Sujeto</h4>
-		<input placeholder="Nombre" type="text" class="span4" name="patient[name]">
-		<input placeholder="ID" type="text"  class="input-medium" name="patient[patid]">
-		<input placeholder="Edad" type="number" class="input-mini" name="patient[age]">
-		<!-- <input placeholder="Sexo" type="text" name="patient[sex]"> -->
-		<label class="radio">
-			<input type="radio" name="patient[sex]" id="sex_m" value="M" checked>
-			M
-		</label>
-		<label class="radio">
-			<input type="radio" name="patient[sex]" id="sex_f" value="F">
-			F
-		</label>
+		<h4><%= "PATIENT: #{patient.code}" %></h4>
 	</div>
-
 
 		En cada paciente evalúe los siguientes 4 ítems. Después lea la petición del especialista y evalué lo que se 		solicita según la sospecha clínica de cada paciente Marque con una X en la pregunta de cada ítem si y sólo si
 		considera que la resonancia presenta dichos hallazgos.
