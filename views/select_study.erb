@@ -1,0 +1,35 @@
+<form action="/form" method="post" class="form-inline">
+	<div class="well">
+
+		<h4>Seleccione el sujeto</h4>
+		<select>
+			<% patients.each do |p| %>
+			<option value=<%= p.id %>><%= p.code %></option>
+			<% end %>
+		</select>
+	</div>
+
+	<h4>Seleccione el estudio</h4>
+	<div class="row">
+		<div class="span3">
+			Estudio (Equipo)
+		</div>
+		<div class="span2">
+			<label class="radio">
+				<input type="radio" name="reporte[equipo]" id="equipo" value="3.0T">
+				Ingenia 3.0T
+			</label>
+		</div>
+		<div class="span2">
+			<label class="radio">
+				<input type="radio" name="reporte[equipo]" id="equipo" value="1.5T">
+				Achieva 1.5T
+			</label>
+		</div>
+	</div>
+
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">Generar reporte</button>
+		<button type="button" class="btn">Cancelar</button>
+	</div>
+</form>

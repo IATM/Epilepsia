@@ -23,5 +23,5 @@ configure do
 
   DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///#{File.expand_path(File.dirname(__FILE__))}/#{Sinatra::Base.environment}.db"))
   DataMapper.finalize
-  DataMapper::Model.raise_on_save_failure = true
+  # DataMapper::Model.raise_on_save_failure = true
 end

@@ -8,7 +8,8 @@ class Reporte
   has 1, :conclusion
 
   property :id, Serial
-  property :codigo, String
-  property :fecha, String
-  property :firma, String
+  property :accession, String # Ciego
+  property :equipo, String # 1.5T o 3.0T
+  property :fecha, String # Buscar para poner automatico
+  property :radiologo, String # Select
 end

@@ -1,18 +1,14 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'sinatra'
+require 'sinatra/flash'
 require 'dm-validations'
 require File.join(File.dirname(__FILE__), 'environment')
 
+enable :sessions
 
 configure do
   set :views, "#{File.dirname(__FILE__)}/views"
-end
-
-error do
-  e = request.env['sinatra.error']
-  Kernel.puts e.backtrace.join("\n")
-  'Application error'
 end
 
 helpers do
@@ -20,48 +16,33 @@ helpers do
 end
 
 get '/' do
-  erb:form
+  @patients = Patient.all
+  erb:select_study, locals: {patients: @patients}
 end
 
 post '/confirmacion' do
-  
-  begin
-   
-    #pat=Patient.where(params[:patient]).first_or_create!
-    pat=Patient.first_or_create(params[:patient])
-   # puts pat.valid_for_default?
-   puts pat.inspect
-    
-      #pat = Patient.create(params[:patient])
-      rep = pat.reportes.new(params[:reporte])
-      rep.esclerosi = Esclerosi.new(params[:esclerosi])
-      rep.displasia = Displasia.new(params[:displasia])
-      rep.malformacion = Malformacion.new(params[:malformacion])
-      rep.tumor = Tumor.new(params[:tumor])
-      rep.conclusion = Conclusion.new(params[:conclusion])
-      pat.save
 
+  @pat=Patient.first_or_create(params[:patient])
+  puts @pat.inspect
+
+  @rep = @pat.reportes.new(params[:reporte])
+  @rep.esclerosi = Esclerosi.new(params[:esclerosi])
+  @rep.displasia = Displasia.new(params[:displasia])
+  @rep.malformacion = Malformacion.new(params[:malformacion])
+  @rep.tumor = Tumor.new(params[:tumor])
+  @rep.conclusion = Conclusion.new(params[:conclusion])
+
+  if @pat.save
     puts "*******************Patient Saved!"
-    erb:confirmation, locals: {patient: pat, reporte:rep, esclerosi:rep.esclerosi, displasia:rep.displasia, malformacion:rep.malformacion, tumor:rep.tumor, conclusion:rep.conclusion}
-  rescue DataMapper::SaveFailureError => e
-    puts "*******************Patient not saved!...reason: "
-    puts e.resource.errors.inspect
+    flash[:notice] = "El reporte se ha guardado satisfactoriamente"
+    erb:confirmation, locals: {patient: @pat, reporte: @rep, esclerosi: @rep.esclerosi, displasia: @rep.displasia, malformacion: @rep.malformacion, tumor: @rep.tumor, conclusion: @rep.conclusion}
+  else
+    puts "*******************Patient not saved! "
+    flash[:error] = @pat.errors.full_messages.join(",")
+    redirect '/'
   end
-
-  # if pat.save
-  #   puts "*******************Patient Saved!"
-  #   erb:confirmation, locals: {patient: pat}
-  # else
-  #   puts "*******************ERROR - Patient not saved!"
-  #   redirect '/'
-  # end
 end
 
-post '/Buscar' do 
-
-erb:search
-
-
-
-
- end
+post '/Buscar' do
+  erb:search
+end

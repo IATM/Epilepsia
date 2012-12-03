@@ -1,6 +1,10 @@
+<% if flash[:error] %>
+	<h3><%= flash[:error] %></h3>
+<% end %>
+
 <form action="/confirmacion" method="post" class="form-inline">
 	<div class="well">
-		<h4>Paciente</h4>
+		<h4>Sujeto</h4>
 		<input placeholder="Nombre" type="text" class="span4" name="patient[name]">
 		<input placeholder="ID" type="text"  class="input-medium" name="patient[patid]">
 		<input placeholder="Edad" type="number" class="input-mini" name="patient[age]">
