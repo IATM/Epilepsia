@@ -1,0 +1,18 @@
+patient												
+hola												
+Dec 7, 2012	8:01 AM											
+												
+Participant	Participant	Block	Trial	Event	Cumulative	Participant		Pressed Or	Correct	Error	Reaction	Image Onset
+Group	Name	Name	Name	Name	Time	Response	Key	Released	Response	Code	Time	
+Main Group	patient	Image	init	init	2015	trigger	y	Pressed	trigger	C	1695	320
+Main Group	patient	Image	Image, 1	imagenes (1, Button1.JPG)	2655	Button1	z	Pressed	(any response)	C	636	2019
+Main Group	patient	Image	Image, 2	imagenes (2, Button2.JPG)	4630	Button2	x	Pressed	(any response)	C	406	4224
+Main Group	patient	Image	Image, 3	imagenes (3, Button3.JPG)	6998	Button3	c	Pressed	(any response)	C	571	6427
+Main Group	patient	Image	Image, 4	imagenes (4, Button4.JPG)	9015	Button4	v	Pressed	(any response)	C	383	8632
+Main Group	patient	Image	Image, 5	imagenes (5, Ch123.jpg)	11294	Button1	z	Pressed	(any response)	C	458	10836
+Main Group	patient	Image	Image, 6	imagenes (6, Ch124.jpg)	13614	Button2	x	Pressed	(any response)	C	575	13039
+Main Group	patient	Image	Image, 7	imagenes (7, Ch134.jpg)	15695	Button3	c	Pressed	(any response)	C	451	15244
+Main Group	patient	Image	Image, 8	imagenes (8, Ch234.jpg)	18006	Button1	z	Pressed	(any response)	C	559	17447
+Main Group	patient	Image	Image, 9	imagenes (6, Ch124.jpg)	20230	Button2	x	Pressed	(any response)	C	581	19649
+Main Group	patient	Image	Image, 10	imagenes (7, Ch134.jpg)	22494	Button4	v	Pressed	(any response)	C	643	21851
+Main Group	patient	Image	Image, 11	imagenes (8, Ch234.jpg)	24575	Button2	x	Pressed	(any response)	C	521	24054
