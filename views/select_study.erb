@@ -1,36 +1,49 @@
 <form action="/form" method="post" class="form-inline">
 	<div class="well">
+		<div class="row">
+			
+			<div class ="span5"><h4>Seleccione el sujeto</h4></div>
+			<div class ="span5"><center><h4>Seleccione el estudio</h4></center></div>
+		</div>
+		
+		<div class="row">
+			<div class ="span5">
+				<select name="patient[id]">
+					<% patients.each do |p| %>
+					<option value=<%= p.id %>><%= p.code %></option>
+					<% end %>
+				</select>
+			</div>
 
-		<h4>Seleccione el sujeto</h4>
-		<select name="patient[id]">
-			<% patients.each do |p| %>
-			<option value=<%= p.id %>><%= p.code %></option>
-			<% end %>
-		</select>
+			<div class="span5">
+				<center>
+				<div class="span2">
+					<label class="radio">
+						<input type="radio" name="reporte[equipo]" id="equipo" value="3.0T">Ingenia 3.0T
+					</label>
+				</div>
+				<div class="span2">
+					<label class="radio">
+						<input type="radio" name="reporte[equipo]" id="equipo" value="1.5T">Achieva 1.5T
+					</label>
+				</center>
+			</div>
+		</div>
+		
 	</div>
 
-	<h4>Seleccione el estudio</h4>
-	<div class="row">
-		<div class="span3">
-			Estudio (Equipo)
-		</div>
-		<div class="span2">
-			<label class="radio">
-				<input type="radio" name="reporte[equipo]" id="equipo" value="3.0T">
-				Ingenia 3.0T
-			</label>
-		</div>
-		<div class="span2">
-			<label class="radio">
-				<input type="radio" name="reporte[equipo]" id="equipo" value="1.5T">
-				Achieva 1.5T
-			</label>
-		</div>
-	</div>
+	<select name="reporte[radiologo]">
+		<option value="" selected="selected">Seleccione radiólogo</option>
+	  	<option value="radiologo1">Radiólogo1</option>
+	  	<option vaue="radiologo2">Radiólogo2</option>
+	</select>
+
+
 
 	<div class="form-actions">
 		<button type="submit" class="btn btn-primary">Generar reporte</button>
-		<a class="btn" href="search?id=#{reporte.[equipo]}">Buscar reporte</a>
+	<!--<a class="btn" href="/search$<%=reporte[equipo]%>">Buscar reporte</a>--> 
+		
 	</div>
 	
 	

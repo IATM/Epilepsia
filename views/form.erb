@@ -4,8 +4,10 @@
 
 <form action="/confirmacion" method="post" class="form-inline">
 	<div class="well">
-		<div class="span5"><h4><%= "PATIENT: #{patient.code}" %> </h4></div> 
-		<div class="span4"><h4><%="ESTUDIO: #{reporte.equipo}"%></h4></div>
+		<div class="span3"><h4><%= "PATIENT: #{patient.code}" %> </h4></div> 
+		<div class="span3"><h4><%="ESTUDIO: #{reporte.equipo}"%></h4></div>
+		<div class="span3"><h4><%="RADIÓLOGO: #{reporte.radiologo}"%></h4></div>
+		
 	</div>
 
 		En cada paciente evalúe los siguientes 4 ítems. Después lea la petición del especialista y evalué lo que se 		solicita según la sospecha clínica de cada paciente Marque con una X en la pregunta de cada ítem si y sólo si
@@ -472,16 +474,6 @@
 			</div>
 			<input type="text" class="span5" name="reporte[fecha]">
 		</div>
-
-
-
-		<div class="row">
-			<div class="span3">
-			Firma del radiólogo:
-			</div>
-			<input type="text" class="span5" name="reporte[radiologo]">
-		</div>
-
 
 	<div class="form-actions">
 		<button type="submit" class="btn btn-primary">Guardar</button>

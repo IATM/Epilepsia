@@ -3,6 +3,7 @@ require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/flash'
 require 'dm-validations'
+#require 'sinatra/rest'
 require File.join(File.dirname(__FILE__), 'environment')
 
 enable :sessions
@@ -22,18 +23,22 @@ get '/' do
   
 get '/search' do
   puts "parametros search"
-  puts params[:id].inspect
+  puts params[:reporte]
   erb:search
 end
   
 post '/form' do
   puts params[:reporte]
   puts params[:patient]
-  @old=Reporte.first(:equipo=>params[:reporte][:equipo], :patient_id=>params[:patient][:id].to_i)
+  @old=Reporte.first(:equipo=>params[:reporte][:equipo], :patient_id=>params[:patient][:id].to_i,:radiologo=>params[:reporte][:radiologo])
   puts @old.inspect
   if @old.nil?
     $pat=Patient.get(params[:patient][:id].to_i)
+    puts "patiente"
+    puts $pat.inspect
     $rep=$pat.reportes.new(params[:reporte])
+    puts "reporte"
+    puts $rep.inspect
     puts "paciente nuevo"
     erb:form, locals: {patient: $pat, reporte: $rep} 
   else 
